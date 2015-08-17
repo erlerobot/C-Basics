@@ -1,0 +1,9 @@
+#include <iostream>
+
+using namespace std;
+
+long arr [] = {6,0,9,6};
+long * ptr = arr ;
+ptr ++;
+long *ptr2 = arr + 3;
+

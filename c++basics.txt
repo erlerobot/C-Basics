@@ -1,0 +1,122 @@
+//EXAMPLE1: HELLO WORLD
+
+ // Hello World! program
+
+ #include <iostream>
+ using namespace std;
+ int main() {
+ cout << "Hello World!" << endl;
+ cout << "I'm a C++ program!" << endl;
+ return 0;
+ }
+
+EXAMPLE2 SECRET NUMBER
+ //In this example a random number is created. The program will run until the user guesses that number.
+ #include <iostream>
+ #include <time.h>
+ #include <cstdlib>
+ using namespace std;
+ int main(){
+  int g, x = 1, max = 100, min = 0, e, array[]= {0};
+  g = rand()%(max-min+1)+min;
+  // This will run until the number is guessed
+  while(true){
+    cout << "Guess a number between 0 and 100" << endl;
+    // The following line accepts input from the keyboard into e.
+    // In the other hand it's important to check that it's a number.
+    if (!(cin >> e)) {
+      cout << "Please enter only numbers" << endl;
+    } else {
+      array[x-1] = e;
+      if (e > g){
+          cout << "The number is lower than "<< e <<" ,try again!" << endl;}
+     else if (e < g){
+          cout << "The number is higher than "<< e << " ,try again!" << endl;}
+      else {
+          cout << "Congrats!" << endl;
+          cout << "You needed "<< x <<" trials"<< endl;
+          cout << "These are all the numbers you have entered: "<< endl;
+          for (int i = 0; i < sizeof(array); ++i){
+               cout << array[i] << "\t";}
+          cout << endl;
+          break; //This line stops the loop.
+         }
+      x=x+1;
+      }
+    }
+ return 0;
+}
+
+
+
+
+//EXAMPLE 3: PASS BY VALUE
+ #include <iostream>
+ using namespace std;
+ 
+ void increment(int a) {
+    a = a + 1;
+    cout << "a in increment " << a << endl;
+ }
+ int main() {
+       int q = 3;
+       increment(q); 
+      cout << "q in main " << q << endl;
+ }
+
+EXAMPLE 4: PASS BY REFERENCE
+ #include <iostream>
+ using namespace std;
+ 
+ void increment(int  &a) {
+     a = a + 1;
+    cout << "a in increment " << a << endl;
+ }
+ int main() {
+      int q = 3;
+      increment(q); 
+     cout << "q in main " << q << endl;
+ }
+
+
+
+
+
+//EXAMPLE 5: COMPLEX NUMBERS CLASS
+ class Complex{
+ 	public:           //Access modifier
+ 	float real, imag;
+ 	Complex (float re, float i){real = re; imag = i;}; //Constructor
+ 	void display(){cout << real << " + i"<< imag << endl ;}; //Method
+ };
+ Complex sum_complex(Complex com1, Complex com2){
+ 	Complex com_sum(com1.real+com2.real,com1.imag + com2.imag);
+ 	return com_sum;};
+
+EXAMPLE 6: SHAPE CLASS AND TRIANGLE - RECTANGLE SUBCLASSES
+ //Base class Shape
+ class Shape{
+ protected:
+    //Fields
+     int width, height;
+ public:
+     //Constructor
+     Shape(int myWidth, int myHeight) : width ( myWidth ), height ( myHeight ) {};
+    //Methods
+     void set_params(int wi, int hei){width=wi; height= hei;};
+     void print_info(){cout << "The width is: " << width << " The height is: " << height << endl;};
+     virtual int area (){return 0;};  
+  };
+ //First subclass Triangle
+ class Triangle : public Shape{ 
+ public:
+ 	  Triangle (int myWidth, int myHeight) : Shape( myWidth, myHeight) {};
+ 	  int area(){return width*height/2;};
+  };
+ //Second subclass Rectangle
+ class Rectangle : public Shape{
+ public:
+ 	  Rectangle (int myWidth, int myHeight) : Shape( myWidth, myHeight) {};
+       int area(){return width*height;};
+ };
+
